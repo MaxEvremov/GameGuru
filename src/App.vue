@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+  <router-view/>
+  <!-- <BodySite/> -->
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import BodySite from './pages/BodySite'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // BodySite
   }
 }
 </script>
@@ -21,6 +23,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: #212529;
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 </style>
