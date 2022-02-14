@@ -12,12 +12,14 @@
         @input="checkLogin"
         >
     </div>
-    <button class="button"
-    @click="changeLogin(login)"
+    <div class="buttonbar">
+      <button class="button"
+      @click="changeLogin(login)"
       >Изменить</button>
       <button class="button"
-    @click="changeLogin(login)"
+      @click="showHideLogin"
       >Закрыть</button>
+    </div>
   </div>
 </template>
 
@@ -37,6 +39,7 @@ export default {
       "changeLogin",
       "nullContemporaneity",
       "findLogin",
+      "showHideLogin"
       ]),
 
     checkLogin(){
@@ -49,3 +52,26 @@ export default {
   }
 }
 </script>
+<style scoped>
+.img{
+  margin-top: 5px;
+  width: 30px;
+}
+.buttonbar{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+  max-width: 250px;
+  margin: auto;
+}
+.button{
+  margin-top: 4px;
+  background-color: white;
+  border: none;
+  font-size: 16px;
+  border: 1px solid black;
+  padding: 10px;
+  min-width: 100px;
+  border-radius: 10px;
+}
+</style>

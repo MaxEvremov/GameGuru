@@ -17,6 +17,7 @@
       <div class="UserInfo">
         <h4
         v-if="getAuthStatus"
+        @click="toUserCabinet"
         >{{getUserInformation.forname}}{{getUserInformation.lastname}}</h4>
       </div>
       <div class="login">
@@ -71,7 +72,10 @@ export default {
       "showCalender",
       "showLogin",
       "closeAll",
-      "exiteAccount"])
+      "exiteAccount"]),
+      toUserCabinet(){
+        this.$router.push("/cabinet")
+      }
   }
 }
 </script>

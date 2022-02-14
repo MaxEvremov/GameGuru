@@ -65,9 +65,16 @@
       >
       </div>
 
+      <div class="area age">
+        <h4 class="title age">Введите ваш возраст</h4>
+      <input class="input age" type="text"
+      v-model="user.age"
+      >
+      </div>
+
       <div class="buttonbar">
         <button class="button"
-        @click="registration(user)"
+        @click="newUser(user)"
         >Регистрация</button>
         <button class="button"
         @click="cleanAllInput"
@@ -82,7 +89,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapMutations, mapGetters, mapActions } from 'vuex'
 export default {
   data(){
     return{
@@ -91,7 +98,8 @@ export default {
         password:null,
         password_confirm:null,
         forname:null,
-        lastname:null
+        lastname:null,
+        age:null
       },
       confirmed:{
         password:null,
@@ -105,7 +113,7 @@ export default {
     },
   methods:{
     ...mapMutations(["findLogin","nullContemporaneity","registration","closeAll"]),
-
+    ...mapActions(['newUser']),
     checkLogin(){
       console.log(this.user.login+this.user.login.length)
 

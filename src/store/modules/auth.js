@@ -1,3 +1,7 @@
+import { UsersAPI } from '../../api/users'
+
+const userAPI = new UsersAPI()
+
 export default {
 
   state: {
@@ -6,12 +10,12 @@ export default {
       {login:"user123", password:"user", forname:"User", lastname:"Unnamed"},
       {login:"Max123", password:"ujujkmujujkm17KT", forname:"Максим", lastname:"Багаев"}
     ],
+    usersAPI:[],
     auth:false,
     tryEnter:false,
     contemporaneity:null,
     user:[]
   },
-
   mutations: {
     exiteAccount(state){
       state.auth = false
@@ -23,27 +27,48 @@ export default {
       state.tryEnter=false
     },
     changeLogin(state, newLogin){
-      console.log(state.user)
+      console.log("LOGIN CHANGE")
       for(let i=0 ;i<state.users.length;i++){
         if (state.users[i].login === state.user.login){
           state.users[i].login = newLogin
-          console.log("change login")
+          console.log("LOGIN HAS BEN CHANGED")
         }
       }
     },
-    changePassword(state, findUser, newPassword){
-      state.users.forEach(user => {
-        if (user.login === findUser) {
-          user.password = newPassword
+    changePassword(state, newPassword){
+      console.log("PASSWORD CHANGE")
+      for(let i=0 ;i<state.users.length;i++){
+        if (state.users[i].login === state.user.login){
+          state.users[i].password = newPassword
+          console.log("PASSWORD HAS BEN CHANGED")
         }
-      })
+      }
+    },
+    changeForname(state, UserForname){
+      console.log("FORNAME CHANGE")
+      for(let i=0 ;i<state.users.length;i++){
+        if (state.users[i].login === state.user.login){
+          state.users[i].forname = UserForname
+          console.log("FORNAME HAS BEN CHANGED")
+        }
+      }
+    },
+    changeLastname(state, UserLastname){
+      console.log("FORNAME CHANGE")
+      for(let i=0 ;i<state.users.length;i++){
+        if (state.users[i].login === state.user.login){
+          state.users[i].lastname = UserLastname
+          console.log("FORNAME HAS BEN CHANGED")
+        }
+      }
     },
     registration(state, newUser){
       state.users.unshift({
         login:newUser.login,
         password:newUser.password,
         forname:newUser.forname,
-        lastname: newUser.lastname
+        lastname: newUser.lastname,
+        age:newUser.age
       })
     },
     deleteUser(state,findLogin){
@@ -82,6 +107,12 @@ export default {
     },
     nullContemporaneity(state){
       state.contemporaneity=null
+    },
+    pushUsers(state, getUsers){ 
+      console.log(getUsers)
+      state.usersAPI = getUsers
+      console.log("PUSH USERS TO USERSAPI STATE")
+      console.log(state.usersAPI)
     }
   },
   getters: {
@@ -107,6 +138,23 @@ export default {
         }else{
           return null
         }
+    },
+    getUsersAPI(state){ 
+      return state.usersAPI
+    }
+  },
+  actions: {
+    async usersAPI(ctx){
+      let users = await userAPI.getUsers()
+      console.log(users)
+      console.log("VUEX get usersAPI")
+
+      ctx.commit('pushUsers', users)
+    },
+    async newUser(ctx, user){
+      console.log("VUEX newuser = "+user)
+      userAPI.newUser(user)
+      ctx.commit('registration',user)
     }
   }
 }
