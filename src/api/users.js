@@ -3,7 +3,7 @@ import axios from 'axios'
 export class UsersAPI {
   async getUsers(){
     return (
-      axios.get('http://127.0.0.1:8001/api/users')
+      axios.get('http://127.0.0.1:8001/users')
     .then(function (response) {
       console.log(response.data)
       return response.data
@@ -14,7 +14,7 @@ export class UsersAPI {
     )
   }
    
-  async newUser(){
+  async newUser(user){
 
     // const csrftoken = this.getCookie('csrftoken');
 
@@ -25,15 +25,16 @@ export class UsersAPI {
     //     }
     // }
 
-    // console.log(user)
-    // console.log(JSON.stringify(user))
-
-    axios.post('http://127.0.0.1:8001/users/',{
-        "login": "66666669",
-        "password": "66666669",
-        "forname": "66666669",
-        "lastname": "666666669",
-        "age": 69
-    })
+    const userValues={
+      login:user.login,
+      password:user.password,
+      forname:user.forname,
+      lastname:user.lastname,
+      age:user.age
+    }
+    const userValuesJSON = JSON.stringify(userValues)
+    axios.post('http://127.0.0.1:8001/users/',
+      userValuesJSON
+    )
   }
 }
