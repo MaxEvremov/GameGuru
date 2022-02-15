@@ -13,7 +13,7 @@
         </div>
         <input class="input email" type="email"
         v-model="user.login"
-        @input="checkLogin"
+
         >
       </div>
 
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters, mapActions } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 export default {
   data(){
     return{
@@ -108,21 +108,21 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapGetters(["getLoginContemporaneity"])
-    },
+  // computed: {
+  //   ...mapGetters(["getLoginContemporaneity"])
+  //   },
   methods:{
-    ...mapMutations(["findLogin","nullContemporaneity","registration","closeAll"]),
+    ...mapMutations(["findLogin","nullContemporaneity","closeAll"]),
     ...mapActions(['newUser']),
-    checkLogin(){
-      console.log(this.user.login+this.user.login.length)
+    // checkLogin(){
+    //   console.log(this.user.login+this.user.login.length)
 
-      if (this.user.login.length>3){
-        this.findLogin(this.user.login)
-      }else{
-        this.nullContemporaneity()
-      }
-    },
+    //   if (this.user.login.length>3){
+    //     this.findLogin(this.user.login)
+    //   }else{
+    //     this.nullContemporaneity()
+    //   }
+    // },
     checkPassword(){
       if (this.user.password.length<1){
         this.confirmed.password = null
@@ -154,7 +154,7 @@ export default {
       }
     },
     registerUser(){
-      this.registration(this.user)
+      this.newUser(this.user)
       this.closeAll
 
     },

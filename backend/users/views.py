@@ -65,7 +65,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from users.models import User
-from users.serializers import UserSerializer
+from users.serializers import UserAuthenticate, UserSerializer, changePasswordSerializer
 
 @csrf_exempt
 def users_list(request):
@@ -80,6 +80,7 @@ def users_list(request):
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = UserSerializer(data=data)
+
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
@@ -103,6 +104,7 @@ def user_detail(request, login):
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
         serializer = UserSerializer(user, data=data)
+
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
@@ -111,3 +113,64 @@ def user_detail(request, login):
     elif request.method == 'DELETE':
         user.delete()
         return HttpResponse(status=204)
+
+
+@csrf_exempt
+def user_auth(request):
+
+  if request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = UserAuthenticate(data=data)
+        if serializer.is_valid():
+            print(serializer.data['login'])
+            print(serializer.data['password'])
+            user = User.objects.get(login=serializer.data['login'])
+            print(user.password)
+            if user and serializer.data['password'] == user.password:
+
+                getUser = UserSerializer(user)
+                return JsonResponse(getUser.data, status=201)
+
+        return JsonResponse(serializer.errors, status=400)
+
+
+@csrf_exempt
+def change_password(request, login):
+
+  user = User.objects.get(login=login)
+  print(user.login+" "+user.password)
+
+  if request.method == 'POST':
+        data = JSONParser().parse(request)
+        
+        serializer = UserSerializer( user, data={'password': data['password']},  partial=True)
+        print(serializer)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(status=201)
+
+        return JsonResponse(serializer.errors, status=400)     
+
+
+    # if request.method == 'POST':
+          # return print(request)
+          # data = JSONParser().parse(request)
+          # serializer = UserSerializer(data=data)
+          # print(serializer.data)
+    # try:
+    #     if request.method == 'POST':
+    #       data = JSONParser().parse(request)
+    #       serializer = UserSerializer(data=data)
+    #       print(serializer.data)
+    #       # login = serializer.data.login
+    # except:
+    #     return False
+    
+    # if request.method == 'POST':
+    #     data = JSONParser().parse(request)
+    #     serializer = UserSerializer(data=data)
+    #     print(serializer.data)
+    #     login = serializer.data.login
+
+    #     if password == serializer.data.password:
+    #       return JsonResponse(serializer.data, status=201)

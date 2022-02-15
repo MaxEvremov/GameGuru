@@ -5,11 +5,11 @@ const userAPI = new UsersAPI()
 export default {
 
   state: {
-    users:[
-      {login:"admin123", password:"admin", forname:"Maxim", lastname:"Evremov"},
-      {login:"user123", password:"user", forname:"User", lastname:"Unnamed"},
-      {login:"Max123", password:"ujujkmujujkm17KT", forname:"Максим", lastname:"Багаев"}
-    ],
+    // users:[
+    //   {login:"admin123", password:"admin", forname:"Maxim", lastname:"Evremov"},
+    //   {login:"user123", password:"user", forname:"User", lastname:"Unnamed"},
+    //   {login:"Max123", password:"ujujkmujujkm17KT", forname:"Максим", lastname:"Багаев"}
+    // ],
     usersAPI:[],
     auth:false,
     tryEnter:false,
@@ -74,25 +74,25 @@ export default {
     deleteUser(state,findLogin){
       state.users[findLogin]
     },
-    verification(state, findUser){
-      for (let i = 0; i < state.users.length&&state.auth===false; i++){
-        if (state.users[i].login === findUser.login){
-          console.log("логин найден "+ state.users[i].login)
-              if (state.users[i].password === findUser.password){
-                console.log("пароль найден "+ state.users[i].password)
-                state.auth = true
-                state.user = state.users[i]
-                console.log("верификация пройдена "+state.auth)
-                console.log("Вы вошли, как "+state.user.forname+" "+state.user.lastname)
+    // verification(state, findUser){
+    //   for (let i = 0; i < state.users.length&&state.auth===false; i++){
+    //     if (state.users[i].login === findUser.login){
+    //       console.log("логин найден "+ state.users[i].login)
+    //           if (state.users[i].password === findUser.password){
+    //             console.log("пароль найден "+ state.users[i].password)
+    //             state.auth = true
+    //             state.user = state.users[i]
+    //             console.log("верификация пройдена "+state.auth)
+    //             console.log("Вы вошли, как "+state.user.forname+" "+state.user.lastname)
 
-              }else{
-                state.tryEnter = true
-              }
-        }else{
-          state.tryEnter = true
-        }
-      }
-    },
+    //           }else{
+    //             state.tryEnter = true
+    //           }
+    //     }else{
+    //       state.tryEnter = true
+    //     }
+    //   }
+    // },
     findLogin(state,login){
       console.log("ищем"+state.users.length)
       state.contemporaneity=null
@@ -113,6 +113,12 @@ export default {
       state.usersAPI = getUsers
       console.log("PUSH USERS TO USERSAPI STATE")
       console.log(state.usersAPI)
+    },
+    userEnter(state,user){
+      state.user=user
+      state.auth=true
+
+      console.log(state.user)
     }
   },
   getters: {
@@ -124,6 +130,7 @@ export default {
       return (name)
     },
     getUserInformation(state){
+      console.log(state.user)
       let name= {forname:state.user.forname, lastname:state.user.lastname}
       return (name)
     },
@@ -151,10 +158,85 @@ export default {
 
       ctx.commit('pushUsers', users)
     },
-    async newUser(ctx, user){
-      console.log("VUEX newuser = "+user)
+    async newUser(state,user){
+      console.log(user)
       userAPI.newUser(user)
-      ctx.commit('registration',user)
+      // ctx.commit('registration',user)
+    },
+    async authUser(ctx, user){
+      console.log("authenticate, connecting" + user)
+      let resUser = await userAPI.authUser(user)
+      ctx.commit('userEnter',resUser)
+    },
+
+
+    async patchUser({commit ,state}, patching){
+      console.log(Object.keys(patching)[0]) 
+
+      // if (Object.keys(patching)[0]==='login'){
+
+      //   console.log("LOGIN")
+
+      //   const patchUser = {
+      //     login:patching.login,
+      //     forname:state.user.forname,
+      //     lastname:state.user.lastname,
+      //     age:state.user.age
+      //   }
+      //   let resUser = await userAPI.patch(login, patchUser)
+      // commit('userEnter',resUser)
+      // }else if(Object.keys(patching)[0]==='forname'){
+
+      //   console.log("FORNAME")
+
+      //   const patchUser = {
+      //     login:state.user.login,
+      //     forname:patching.forname,
+      //     lastname:state.user.lastname,
+      //     age:state.user.age
+      //   }
+      //   let resUser = await userAPI.patch(login, patchUser)
+      // commit('userEnter',resUser)
+      // }else if(Object.keys(patching)[0]==='lastname'){
+
+      //   console.log("LASTNAME")
+
+      //   const patchUser = {
+      //     login:state.user.login,
+      //     forname:state.user.forname,
+      //     lastname:patching.lastname,
+      //     age:state.user.age
+      //   }
+      //   let resUser = await userAPI.patch(login, patchUser)
+      // commit('userEnter',resUser)
+      // }else if(Object.keys(patching)[0]==='age'){
+
+      //   console.log("AGE")
+
+      //   const patchUser = {
+      //     login:state.user.login,
+      //     forname:state.user.forname,
+      //     lastname:state.user.lastname,
+      //     age:patching.age
+      //   }
+      //   let resUser = await userAPI.patch(login, patchUser)
+      // commit('userEnter',resUser)
+      // }
+
+
+      let login = state.user.login
+      console.log(state.user)
+
+      // let newlogin = {login:state.user.login}
+      let resUser = await userAPI.patch(login)
+      commit('userEnter',resUser)
+    },
+
+
+    async patchPassword({commit ,state}, patching){
+      const login = state.user.login
+      let resUser = await userAPI.patchPassword(login, patching)
+      commit('userEnter',resUser)
     }
   }
 }

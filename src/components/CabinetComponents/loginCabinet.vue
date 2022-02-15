@@ -23,7 +23,7 @@
 
     <div class="buttons">
       <button class="button"
-      @click="enterToCabinet"
+      @click="authUser(user)"
       >Войти</button>
       <button class="button"
       @click="showRegistration"
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapMutations, mapGetters, mapActions } from 'vuex'
 export default {
   data(){
     return{
@@ -54,7 +54,8 @@ export default {
   },
   computed: mapGetters(["getAuthStatus", "getUserInformation","getTryEnter"]),
   methods:{
-    ...mapMutations(["verification", "closeAll","nulledTryEnter","showRegistration"]),
+    ...mapMutations([ "closeAll","nulledTryEnter","showRegistration"]),
+    ...mapActions(['authUser']),
     closeAndNulledTry(){
       this.closeAll(),
       this.nulledTryEnter(),

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapMutations, mapGetters, mapActions } from 'vuex'
 export default {
   data(){
     return{
@@ -59,6 +59,7 @@ export default {
   computed: mapGetters(["getAuthStatus", "getUserInformation","getTryEnter"]),
   methods:{
     ...mapMutations(["verification", "closeAll","nulledTryEnter","showRegistration"]),
+    ...mapActions(['authUser']),
     closeAndNulledTry(){
       this.closeAll(),
       this.nulledTryEnter(),
@@ -69,7 +70,7 @@ export default {
       this.user.password=null
     },
     enterToCabinet(){
-      this.verification(this.user),
+      this.authUser(this.user),
       this.cleanInputs()
     }
   }

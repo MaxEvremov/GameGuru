@@ -6,7 +6,7 @@
           <img class="img reject"  v-if="confirmed_passw1===123" src="data:image/png;base64,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" alt="">
         </div>
         <input class="input password" type="password"
-        v-model="passw1"
+        v-model="change.password"
         @input="checkPassword"
         >
       </div>
@@ -24,7 +24,7 @@
       </div>
       <div class="buttonbar">
          <button class="button"
-    @click="change"
+      @click="changePassword"
       >Изменить</button>
       <button class="button"
       @click="showHidePassword"
@@ -35,11 +35,13 @@
 
 <script>
 
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions} from 'vuex'
 export default {
   data(){
     return{
-      passw1:null,
+      change:{
+        password:null
+      },
       passw2:null,
       confirmed_passw1:null,
       confirmed_passw2:null
@@ -47,27 +49,32 @@ export default {
   },
   methods: {
     ...mapMutations([
-      "changePassword",
       "showHidePassword"
       ]),
+    ...mapActions(['patchPassword']),
+
     checkPassword(){
-      if (this.passw1.length<1){
+      if (this.change.password.length<1){
         this.confirmed_passw1 = null
-      }else if(this.passw1.length<6){
+      }else if(this.change.password.length<6){
         this.confirmed_passw1 = false
       }else{
         this.confirmed_passw1 = true
       }
     },
     confirmPassword(){
-      if (this.passw1===this.passw2){
+      if (this.change.password===this.passw2){
         this.confirmed_passw2 = true
       }else{
         this.confirmed_passw2 = false
       }
     },
-    change(){
-      this.changePassword(this.passw1)
+    changePassword(){
+      if (this.confirmed_passw1&&this.confirmed_passw2){
+        this.patchPassword(this.change)
+      }else{
+        alert("пароль говно или не совпадает")
+      }
     }
   }
 }
