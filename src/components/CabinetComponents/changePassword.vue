@@ -51,7 +51,7 @@ export default {
     ...mapMutations([
       "showHidePassword"
       ]),
-    ...mapActions(['patchPassword']),
+    ...mapActions(['patch']),
 
     checkPassword(){
       if (this.change.password.length<1){
@@ -71,7 +71,7 @@ export default {
     },
     changePassword(){
       if (this.confirmed_passw1&&this.confirmed_passw2){
-        this.patchPassword(this.change)
+        this.patch(this.change)
       }else{
         alert("пароль говно или не совпадает")
       }

@@ -13,7 +13,7 @@
     </div>
     <div class="buttonbar">
       <button class="button"
-      @click="patchUser(patch)"
+      @click="patch(patch)"
       >Изменить</button>
       <button class="button"
       @click="showHideLogin"
@@ -41,7 +41,7 @@ export default {
       "findLogin",
       "showHideLogin"
       ]),
-    ...mapActions(['patchUser']),
+    ...mapActions(['patch']),
     // checkLogin(){
     //   if (this.login.length>3){
     //     this.findLogin(this.login)

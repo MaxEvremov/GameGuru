@@ -79,6 +79,7 @@ def users_list(request):
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
+        print(data)
         serializer = UserSerializer(data=data)
 
         if serializer.is_valid():
@@ -122,33 +123,26 @@ def user_auth(request):
         data = JSONParser().parse(request)
         serializer = UserAuthenticate(data=data)
         if serializer.is_valid():
+            print('*******************user enter******************')
             print(serializer.data['login'])
             print(serializer.data['password'])
+            print('*******************user enter******************')
             user = User.objects.get(login=serializer.data['login'])
-            print(user.password)
             if user and serializer.data['password'] == user.password:
-
                 getUser = UserSerializer(user)
                 return JsonResponse(getUser.data, status=201)
-
         return JsonResponse(serializer.errors, status=400)
 
 
 @csrf_exempt
-def change_password(request, login):
-
+def patch(request, login):
   user = User.objects.get(login=login)
-  print(user.login+" "+user.password)
-
   if request.method == 'POST':
         data = JSONParser().parse(request)
-        
-        serializer = UserSerializer( user, data={'password': data['password']},  partial=True)
-        print(serializer)
+        serializer = UserSerializer(user, data=data,  partial=True)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(status=201)
-
+            return JsonResponse(serializer.data,status=201)
         return JsonResponse(serializer.errors, status=400)     
 
 

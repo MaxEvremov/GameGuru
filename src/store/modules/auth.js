@@ -170,8 +170,8 @@ export default {
     },
 
 
-    async patchUser({commit ,state}, patching){
-      console.log(Object.keys(patching)[0]) 
+    // async patchUser({commit ,state}, patching){
+    //   console.log(Object.keys(patching)[0]) 
 
       // if (Object.keys(patching)[0]==='login'){
 
@@ -224,18 +224,18 @@ export default {
       // }
 
 
-      let login = state.user.login
-      console.log(state.user)
+    //   let login = state.user.login
+    //   console.log(state.user)
 
-      // let newlogin = {login:state.user.login}
-      let resUser = await userAPI.patch(login)
-      commit('userEnter',resUser)
-    },
+    //   // let newlogin = {login:state.user.login}
+    //   let resUser = await userAPI.patch(login)
+    //   commit('userEnter',resUser)
+    // },
 
 
-    async patchPassword({commit ,state}, patching){
+    async patch({commit ,state}, patching){
       const login = state.user.login
-      let resUser = await userAPI.patchPassword(login, patching)
+      let resUser = await userAPI.patch(login, patching)
       commit('userEnter',resUser)
     }
   }

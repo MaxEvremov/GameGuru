@@ -45,31 +45,31 @@ export class UsersAPI {
 
 
 
-  async patch(login){
+  // async patch(login){
 
-    const patch = {
-      login:'Anton',
-      password:'123456',
-      forname:'Anton',
-      lastname:'Vasikov',
-      age:26
-    }
+  //   const patch = {
+  //     login:'Anton',
+  //     password:'123456',
+  //     forname:'Anton',
+  //     lastname:'Vasikov',
+  //     age:26
+  //   }
 
-    axios.put(`http://127.0.0.1:8001/users/${login}/`,
-    JSON.stringify(patch)
-    )
-    .then(function (response) {
-      console.log(response.data)
-      return response.data
-    })
-  }
+  //   axios.put(`http://127.0.0.1:8001/users/${login}/`,
+  //   JSON.stringify(patch)
+  //   )
+  //   .then(function (response) {
+  //     console.log(response.data)
+  //     return response.data
+  //   })
+  // }
 
 
 
-  async patchPassword(login,password){
+  async patch(login,value){
 
-    axios.post(`http://127.0.0.1:8001/users/password/${login}/`,
-    JSON.stringify(password)
+    axios.post(`http://127.0.0.1:8001/patch/${login}/`,
+    JSON.stringify(value)
     )
     .then(function (response) {
       console.log(response.data)
