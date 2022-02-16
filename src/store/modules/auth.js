@@ -13,67 +13,67 @@ export default {
     usersAPI:[],
     auth:false,
     tryEnter:false,
-    contemporaneity:null,
+    // contemporaneity:null,
     user:[]
   },
   mutations: {
-    exiteAccount(state){
+    exiteAccount(state) {
       state.auth = false
       state.user = []
       state.tryEnter = false
-      console.log("выход из личного кабинета "+state.auth)
+      console.log("выход из личного кабинета " + state.auth)
     },
-    nulledTryEnter(state){
-      state.tryEnter=false
+    nulledTryEnter(state) {
+      state.tryEnter = false
     },
-    changeLogin(state, newLogin){
-      console.log("LOGIN CHANGE")
-      for(let i=0 ;i<state.users.length;i++){
-        if (state.users[i].login === state.user.login){
-          state.users[i].login = newLogin
-          console.log("LOGIN HAS BEN CHANGED")
-        }
-      }
-    },
-    changePassword(state, newPassword){
-      console.log("PASSWORD CHANGE")
-      for(let i=0 ;i<state.users.length;i++){
-        if (state.users[i].login === state.user.login){
-          state.users[i].password = newPassword
-          console.log("PASSWORD HAS BEN CHANGED")
-        }
-      }
-    },
-    changeForname(state, UserForname){
-      console.log("FORNAME CHANGE")
-      for(let i=0 ;i<state.users.length;i++){
-        if (state.users[i].login === state.user.login){
-          state.users[i].forname = UserForname
-          console.log("FORNAME HAS BEN CHANGED")
-        }
-      }
-    },
-    changeLastname(state, UserLastname){
-      console.log("FORNAME CHANGE")
-      for(let i=0 ;i<state.users.length;i++){
-        if (state.users[i].login === state.user.login){
-          state.users[i].lastname = UserLastname
-          console.log("FORNAME HAS BEN CHANGED")
-        }
-      }
-    },
-    registration(state, newUser){
-      state.users.unshift({
-        login:newUser.login,
-        password:newUser.password,
-        forname:newUser.forname,
-        lastname: newUser.lastname,
-        age:newUser.age
-      })
-    },
-    deleteUser(state,findLogin){
-      state.users[findLogin]
-    },
+    // changeLogin(state, newLogin) {
+    //   console.log("LOGIN CHANGE")
+    //   for (let i = 0; i < state.users.length; i++) {
+    //     if (state.users[i].login === state.user.login) {
+    //       state.users[i].login = newLogin
+    //       console.log("LOGIN HAS BEN CHANGED")
+    //     }
+    //   }
+    // },
+    // changePassword(state, newPassword) {
+    //   console.log("PASSWORD CHANGE")
+    //   for (let i = 0; i < state.users.length; i++) {
+    //     if (state.users[i].login === state.user.login) {
+    //       state.users[i].password = newPassword
+    //       console.log("PASSWORD HAS BEN CHANGED")
+    //     }
+    //   }
+    // },
+    // changeForname(state, UserForname) {
+    //   console.log("FORNAME CHANGE")
+    //   for (let i = 0; i < state.users.length; i++) {
+    //     if (state.users[i].login === state.user.login) {
+    //       state.users[i].forname = UserForname
+    //       console.log("FORNAME HAS BEN CHANGED")
+    //     }
+    //   }
+    // },
+    // changeLastname(state, UserLastname) {
+    //   console.log("FORNAME CHANGE")
+    //   for (let i = 0; i < state.users.length; i++) {
+    //     if (state.users[i].login === state.user.login) {
+    //       state.users[i].lastname = UserLastname
+    //       console.log("FORNAME HAS BEN CHANGED")
+    //     }
+    //   }
+    // },
+    // registration(state, newUser) {
+    //   state.users.unshift({
+    //     login: newUser.login,
+    //     password: newUser.password,
+    //     forname: newUser.forname,
+    //     lastname: newUser.lastname,
+    //     age: newUser.age
+    //   })
+    // },
+    // deleteUser(state, findLogin) {
+    //   state.users[findLogin]
+    // },
     // verification(state, findUser){
     //   for (let i = 0; i < state.users.length&&state.auth===false; i++){
     //     if (state.users[i].login === findUser.login){
@@ -84,7 +84,6 @@ export default {
     //             state.user = state.users[i]
     //             console.log("верификация пройдена "+state.auth)
     //             console.log("Вы вошли, как "+state.user.forname+" "+state.user.lastname)
-
     //           }else{
     //             state.tryEnter = true
     //           }
@@ -93,31 +92,30 @@ export default {
     //     }
     //   }
     // },
-    findLogin(state,login){
-      console.log("ищем"+state.users.length)
-      state.contemporaneity=null
-      for(let i=0 ;i<state.users.length&&state.contemporaneity!==true;i++){
-        console.log(state.users[i])
-        if (state.users[i].login === login){
-          state.contemporaneity = true
-        }else{
-          state.contemporaneity = false
-        }
-      }
-    },
-    nullContemporaneity(state){
-      state.contemporaneity=null
-    },
-    pushUsers(state, getUsers){ 
+    // findLogin(state, login) {
+    //   console.log("ищем" + state.users.length)
+    //   state.contemporaneity = null
+    //   for (let i = 0; i < state.users.length && state.contemporaneity !== true; i++) {
+    //     console.log(state.users[i])
+    //     if (state.users[i].login === login) {
+    //       state.contemporaneity = true
+    //     } else {
+    //       state.contemporaneity = false
+    //     }
+    //   }
+    // },
+    // nullContemporaneity(state) {
+    //   state.contemporaneity = null
+    // },
+    pushUsers(state, getUsers) {
       console.log(getUsers)
       state.usersAPI = getUsers
       console.log("PUSH USERS TO USERSAPI STATE")
       console.log(state.usersAPI)
     },
-    userEnter(state,user){
-      state.user=user
-      state.auth=true
-
+    userEnter(state, user) {
+      state.user = user
+      state.auth = true
       console.log(state.user)
     }
   },
@@ -131,8 +129,7 @@ export default {
     },
     getUserInformation(state){
       console.log(state.user)
-      let name= {forname:state.user.forname, lastname:state.user.lastname}
-      return (name)
+      return (state.user)
     },
     getTryEnter(state){
       return state.tryEnter
@@ -232,11 +229,16 @@ export default {
     //   commit('userEnter',resUser)
     // },
 
-
     async patch({commit ,state}, patching){
       const login = state.user.login
       let resUser = await userAPI.patch(login, patching)
+      console.log(resUser)
       commit('userEnter',resUser)
+    },
+    async deleteAccount({commit ,state}){
+      const login = state.user.login
+      userAPI.delete(login)
+      commit('exiteAccount')
     }
   }
 }

@@ -143,7 +143,11 @@ def patch(request, login):
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data,status=201)
-        return JsonResponse(serializer.errors, status=400)     
+        return JsonResponse(serializer.errors, status=400)   
+
+  elif request.method == 'DELETE':
+        user.delete()
+        return HttpResponse(status=204)  
 
 
     # if request.method == 'POST':

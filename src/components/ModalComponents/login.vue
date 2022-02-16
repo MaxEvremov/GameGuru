@@ -98,6 +98,7 @@ height: 220px;
   background-color: white;
   border: none;
   font-size: 16px;
+  cursor: pointer;
 }
 .text{
   color: rgb(139, 16, 16);

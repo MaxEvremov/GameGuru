@@ -67,14 +67,21 @@ export class UsersAPI {
 
 
   async patch(login,value){
-
-    axios.post(`http://127.0.0.1:8001/patch/${login}/`,
+    return(
+      axios.post(`http://127.0.0.1:8001/patch/${login}/`,
     JSON.stringify(value)
     )
     .then(function (response) {
       console.log(response.data)
       return response.data
     })
+    )
+  }
+
+  async delete(login){
+    return(
+      axios.delete(`http://127.0.0.1:8001/patch/${login}/`)
+    )
   }
   
 }

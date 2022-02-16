@@ -65,16 +65,18 @@
       >
       </div>
 
-      <div class="area age">
-        <h4 class="title age">Введите ваш возраст</h4>
-      <input class="input age" type="text"
+      <div class="area">
+        <h4 class="title">Введите ваш возраст</h4>
+        <div>
+        </div>
+        <input class="input age" type="text"
       v-model="user.age"
       >
       </div>
 
       <div class="buttonbar">
         <button class="button"
-        @click="newUser(user)"
+        @click="registerUser"
         >Регистрация</button>
         <button class="button"
         @click="cleanAllInput"
@@ -155,7 +157,8 @@ export default {
     },
     registerUser(){
       this.newUser(this.user)
-      this.closeAll
+      this.cleanAllInput()
+      this.closeAll()
 
     },
     cleanAllInput(){
@@ -180,7 +183,7 @@ export default {
   background-color: white;
   position: absolute;
   width: 800px;
-  height: 600px;
+  height: 620px;
 }
 .area{
   display: grid;
@@ -196,12 +199,16 @@ export default {
   height: 30px;
   margin-right: 20px;
 }
+.age{
+  width: 60px;
+}
 .button{
   padding: 20px;
   margin-top: 4px;
   background-color: white;
   border: none;
   font-size: 16px;
+  cursor: pointer;
 }
 .img{
   margin-top: 5px;

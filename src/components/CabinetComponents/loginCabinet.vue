@@ -23,7 +23,7 @@
 
     <div class="buttons">
       <button class="button"
-      @click="authUser(user)"
+      @click="enterToCabinet()"
       >Войти</button>
       <button class="button"
       @click="showRegistration"
@@ -66,7 +66,7 @@ export default {
       this.user.password=null
     },
     enterToCabinet(){
-      this.verification(this.user),
+      this.authUser(this.user),
       this.cleanInputs()
     }
   }
@@ -96,6 +96,7 @@ height: 290px;
   background-color: white;
   border: none;
   font-size: 16px;
+  cursor: pointer;
 }
 .notEnter{
   margin: auto;

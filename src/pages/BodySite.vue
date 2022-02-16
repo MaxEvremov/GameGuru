@@ -26,6 +26,6 @@ export default {
 <style scoped>
 .bodysite{
   width: 100%;
-  height: 800px;
+  height: 100vmax;
 }
 </style>

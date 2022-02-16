@@ -1,3 +1,4 @@
+from pyexpat import model
 from rest_framework.serializers import ModelSerializer
 from users.models import User
 
@@ -35,3 +36,9 @@ class changePasswordSerializer(ModelSerializer):
   class Meta:
     model = User
     fields = ['password']
+
+class authorSerializer(ModelSerializer):
+
+  class Meta:
+    model = User
+    fields = ['forname', 'lastname']

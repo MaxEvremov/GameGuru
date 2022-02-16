@@ -15,10 +15,10 @@
 
     <div class="podrazdel_2">
       <div class="UserInfo">
-        <h4
+        <h4 class="nameUser"
         v-if="getAuthStatus"
         @click="toUserCabinet"
-        >{{getUserInformation.forname}}{{getUserInformation.lastname}}</h4>
+        >{{getUserInformation.forname}} {{getUserInformation.lastname}}</h4>
       </div>
       <div class="login">
           <h4 class="title" @mouseenter="showLogin"
@@ -97,6 +97,7 @@ export default {
 .menuElements{
   display: grid;
   grid-template-columns: repeat(5,1fr);
+  cursor: pointer;
 }
 .modal{
   position: absolute;
@@ -115,6 +116,7 @@ export default {
 .login{
   display: grid;
   margin-right: 10px;
+  cursor: pointer;
 }
 .gridbutton{
   display: grid;
@@ -173,5 +175,8 @@ export default {
 .login_list-leave-to {
   opacity: 0s;
   transform: translateX(100%);
+}
+.nameUser{
+  cursor: pointer;
 }
 </style>
