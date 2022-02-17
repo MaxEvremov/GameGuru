@@ -71,11 +71,11 @@
       <loginCabinet/>
     </div>
 
-    <div>
+    <!-- <div>
       <button class="button content"
       @click="toContentPage"
       >На главную страницу</button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -101,11 +101,12 @@ export default {
     "showHideLastname",
     "showHideDelete",
     ]),
-    toContentPage(){
-      console.log("ИДЕМ К КОНТЕНТУ")
-      this.$router.push('/content')
-    },
+    // toContentPage(){
+    //   console.log("ПИЗДУЕМ К КОНТЕНТУ")
+    //   this.$router.push('/content')
+    // },
     toUserCabinet(){
+      console.log("ПИЗДУЕМ В КАБИНЕТ")
       this.$router.push("/cabinet")
     }
   }, 

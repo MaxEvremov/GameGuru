@@ -2,14 +2,18 @@
   <div class="toolbar">
 
     <div class="podrazdel_1">
-      <div class="menuElements">
+      <div class="menuElements leftside">
         <div class="logo">
           <img class="img" src="https://images.greenmangaming.com/16a482767e0e4dd4a329a1b55cfcdcb8/e059a130ed2848e0a9a772328254f197.jpg" alt="logo">
         </div>
-        <h4 class="title" @mouseenter="showRead">Читать</h4>
-        <h4 class="title" @mouseenter="showWatch">Смотреть</h4>
-        <h4 class="title" @mouseenter="showPlay">Играть</h4>
-        <h4 class="title" @mouseenter="showCalender">Календарь игр</h4>
+        <my-button @mouseenter="showRead">Читать</my-button>
+        <my-button @mouseenter="showWatch">Смотреть</my-button>
+        <my-button @mouseenter="showPlay">Играть</my-button>
+        <my-button @mouseenter="showCalender">Календарь игр</my-button>
+        <!-- <h4 class="title" @mouseenter="showRead">Читать</h4> -->
+        <!-- <h4 class="title" @mouseenter="showWatch">Смотреть</h4> -->
+        <!-- <h4 class="title" @mouseenter="showPlay">Играть</h4> -->
+        <!-- <h4 class="title" @mouseenter="showCalender">Календарь игр</h4> -->
       </div>
     </div>
 
@@ -20,13 +24,15 @@
         @click="toUserCabinet"
         >{{getUserInformation.forname}} {{getUserInformation.lastname}}</h4>
       </div>
-      <div class="login">
-          <h4 class="title" @mouseenter="showLogin"
+      <div class="menuElements login">
+        <my-button @mouseenter="showLogin" v-if="!getAuthStatus">Войти</my-button>
+        <my-button @mouseenter="exiteAccount"  v-else>Выйти</my-button>
+          <!-- <h4 class="title" @mouseenter="showLogin"
           v-if="!getAuthStatus"
-          >Войти</h4>
-          <h4 class="title" @click="exiteAccount"
+          >Войти</h4> -->
+          <!-- <h4 class="title" @click="exiteAccount"
           v-else
-          >Выйти</h4>
+          >Выйти</h4> -->
         </div>
     </div>
   </div>
@@ -96,14 +102,17 @@ export default {
 }
 .menuElements{
   display: grid;
+  align-items: center
+}
+.leftside{
+  display: grid;
   grid-template-columns: repeat(5,1fr);
-  cursor: pointer;
+  align-items: center
 }
 .modal{
   position: absolute;
   width: 100%;
   background-color: white;
-  z-index: 1;
 }
 .modal__login{
   position: absolute;
@@ -113,7 +122,7 @@ export default {
   display: grid;
   padding: 10px;
 }
-.login{
+.rightside{
   display: grid;
   margin-right: 10px;
   cursor: pointer;
@@ -128,7 +137,7 @@ export default {
   display: grid;
   grid-template-columns: 70% 30%;
   border-bottom: 1px solid rgb(216, 216, 216);
-
+  z-index: 2;
 }
 .podrazdel_1{
   display: grid;

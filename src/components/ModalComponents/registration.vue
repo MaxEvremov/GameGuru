@@ -184,6 +184,10 @@ export default {
   position: absolute;
   width: 800px;
   height: 620px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 144, 255, 0.69);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(0, 144, 255, 0.69);
+  box-shadow: 0px 0px 6px 1px rgba(0, 144, 255, 0.90);
+  z-index: 1;
 }
 .area{
   display: grid;
