@@ -3,7 +3,7 @@ import axios from 'axios'
 export class BlogAPI {
   async getPosts(){
     return (
-      axios.get('http://127.0.0.1:8001/posts/')
+      axios.get('http://127.0.0.1:8002/posts/')
     .then(function(response){
       console.log(response.data)
       return response.data
@@ -28,7 +28,7 @@ export class BlogAPI {
   }
   async patch(id,value){
     return(
-      axios.post(`http://127.0.0.1:8001/post/patch/${id}/`,
+      axios.post(`http://127.0.0.1:8002/post/patch/${id}/`,
     JSON.stringify(value)
     )
     .then(function (response) {

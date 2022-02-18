@@ -1,5 +1,8 @@
 from django.contrib import admin
 from .models import Post
+from .models import Image
+
+admin.site.register(Image)
 
 
 class UserAdmin(admin.ModelAdmin):

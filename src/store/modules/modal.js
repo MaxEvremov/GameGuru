@@ -8,7 +8,8 @@ export default {
       play:false,
       calender:false,
       login:false,
-      registration:false
+      registration:false,
+      newpost:false,
     }
   },
 
@@ -62,6 +63,11 @@ export default {
       state.show.play = false
       state.show.calender = false
       state.show.registration = true
+    },
+    showNewPost(state){
+      console.log("a")
+      console.log(state.show.newpost)
+      state.show.newpost = !state.show.newpost
     },
     closeAll(state){
       state.show.read = false

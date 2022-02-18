@@ -3,11 +3,12 @@ from blog.models import Post
 from users.serializers import authorSerializer
 
 
+
 class PostSerializer(ModelSerializer):
   author = authorSerializer(many=False)
   class Meta:
     model = Post
-    fields = ['id', 'title','slug','author','body','publish','created','updated','status']
+    fields = ['id', 'title','slug', 'image','author','body','publish','created','updated','status']
 
   def create(self, validated_data):
 

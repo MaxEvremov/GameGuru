@@ -4,6 +4,9 @@ from rest_framework.parsers import JSONParser
 from blog.models import Post
 from blog.serializers import PostSerializer
 
+
+
+
 @csrf_exempt
 def posts_list(request):
 

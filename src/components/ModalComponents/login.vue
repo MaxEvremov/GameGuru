@@ -1,47 +1,40 @@
 <template>
-  <div class="window"
-  :class="{
-    window__open:getTryEnter
-  }"
-  v-if="!getAuthStatus"
-  >
-    <div class="input">
+  <div class="window" v-if="!getAuthStatus">
+
+    <my-input type="email" v-model="user.login" placeholder="login or e-mail"/>
+    <my-input type="password" v-model="user.password" placeholder="password"/>
+    <!-- <div class="input">
 
       <input
       type="email"
       v-model="user.login"
       >
 
-    </div>
+    </div> -->
 
-    <div class="input">
+    <!-- <div class="input">
 
       <input
       type="password"
       v-model="user.password"
       >
 
-    </div>
+    </div> -->
     <div class="buttons">
-      <button class="button"
+      <my-button @click="enterToCabinet">Войти</my-button>
+      <my-button @click="closeAndNulledTry">Закрыть</my-button>
+      <!-- <button class="button"
       @click="enterToCabinet"
-      >Войти</button>
-      <button class="button"
+      >Войти</button> -->
+      <!-- <button class="button"
       @click="closeAndNulledTry"
-      >Закрыть</button>
+      >Закрыть</button> -->
     </div>
-    <div class="notEnter"
-    v-if="getTryEnter"
-    >
+    <div class="alert" v-if="getTryEnter">
       <p class="text">Неверный логин или пароль</p>
       <p class="text">Проверьте Caps Lock</p>
       <p class="text">Либо зарегестрируйтесь</p>
-    </div>
-    <div class="registration"
-    >
-      <button class="button"
-      @click="showRegistration"
-      >Регистрация</button>
+      <my-button @click="showRegistration">Регистрация</my-button>
     </div>
   </div>
 </template>
@@ -83,7 +76,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   width: 200px;
-  height: 130px;
+  /* height: 130px; */
   margin-left: 100px;
 }
 .window__open{
@@ -105,5 +98,6 @@ height: 220px;
   font-size: 14px;
   width: 200px;
   height: 8px;
+  margin-bottom: 25px;
 }
 </style>

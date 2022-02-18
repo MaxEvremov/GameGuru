@@ -13,31 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# from urllib.parse import urlparse
+
 from django.contrib import admin
-# from django.urls import path
-# from rest_framework.routers import SimpleRouter
-# from users.views import UsersView
-# from users import views
-# from rest_framework.urlpatterns import format_suffix_patterns
-
-# router = SimpleRouter()
-# router.register('api/users', UsersView)
-
-
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-# ]
-
-# urlpatterns +=router.urls
-
-
-# urlpatterns = [
-#     path('users/',views.users_list)
-# ]
-
-# urlpatterns = format_suffix_patterns(urlpatterns)
-
 
 from django.urls import path, include
 
@@ -45,5 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('',include('blog.urls')),
-    
 ]

@@ -12,7 +12,7 @@ const routes = [
     component: BodySite,
     children:[
       {
-        path: '/content',
+        path: '',
         name:'content',
         component: content
       },

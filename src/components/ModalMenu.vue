@@ -10,10 +10,6 @@
         <my-button @mouseenter="showWatch">Смотреть</my-button>
         <my-button @mouseenter="showPlay">Играть</my-button>
         <my-button @mouseenter="showCalender">Календарь игр</my-button>
-        <!-- <h4 class="title" @mouseenter="showRead">Читать</h4> -->
-        <!-- <h4 class="title" @mouseenter="showWatch">Смотреть</h4> -->
-        <!-- <h4 class="title" @mouseenter="showPlay">Играть</h4> -->
-        <!-- <h4 class="title" @mouseenter="showCalender">Календарь игр</h4> -->
       </div>
     </div>
 
@@ -27,12 +23,6 @@
       <div class="menuElements login">
         <my-button @mouseenter="showLogin" v-if="!getAuthStatus">Войти</my-button>
         <my-button @mouseenter="exiteAccount"  v-else>Выйти</my-button>
-          <!-- <h4 class="title" @mouseenter="showLogin"
-          v-if="!getAuthStatus"
-          >Войти</h4> -->
-          <!-- <h4 class="title" @click="exiteAccount"
-          v-else
-          >Выйти</h4> -->
         </div>
     </div>
   </div>
@@ -91,6 +81,7 @@ export default {
   position: absolute;
   display: grid;
   width: 100%;
+  z-index: 900;
 }
 .loginModaWindow{
   justify-items: end;
