@@ -4,7 +4,7 @@ export class UsersAPI {
 
   async getUsers(){
     return (
-      axios.get('http://127.0.0.1:8001/users')
+      axios.get('http://127.0.0.1:8000/users')
     .then(function (response) {
       console.log(response.data)
       return response.data
@@ -24,7 +24,7 @@ export class UsersAPI {
       age:user.age
     }
     const userValuesJSON = JSON.stringify(userValues)
-    axios.post('http://127.0.0.1:8001/users/',
+    axios.post('http://127.0.0.1:8000/users/',
       userValuesJSON
     )
   }
@@ -33,7 +33,7 @@ export class UsersAPI {
     const user = JSON.stringify(authUser)
     console.log("API "+user)
     return(
-      axios.post('http://127.0.0.1:8001/auth/',
+      axios.post('http://127.0.0.1:8000/auth/',
       user
     )
     .then(function (response) {
@@ -68,7 +68,7 @@ export class UsersAPI {
 
   async patch(login,value){
     return(
-      axios.post(`http://127.0.0.1:8001/patch/${login}/`,
+      axios.post(`http://127.0.0.1:8000/patch/${login}/`,
     JSON.stringify(value)
     )
     .then(function (response) {

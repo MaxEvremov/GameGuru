@@ -9,8 +9,10 @@
         <input class="input email" type="email" v-model="change.login">
     </div>
     <div class="buttonbar">
-      <button class="button" @click="patchLogin()">Изменить</button>
-      <button class="button" @click="showHideLogin">Закрыть</button>
+      <my-button @click="patchLogin()">Изменить</my-button>
+      <my-button @click="showHideLogin">Закрыть</my-button>
+      <!-- <button class="button" @click="patchLogin()">Изменить</button> -->
+      <!-- <button class="button" @click="showHideLogin">Закрыть</button> -->
     </div>
   </div>
 </template>
@@ -47,11 +49,12 @@ export default {
 </script>
 <style scoped>
 .window{
-  border: 1px solid black;
-  border-radius: 10px;
   margin: 10px;
   min-width: 300px;
   min-height:150px;
+}
+.title{
+   color: rgb(168, 168, 255);
 }
 .img{
   margin-top: 5px;
@@ -65,14 +68,6 @@ export default {
   margin: auto;
 }
 .button{
-  margin-top: 18px;
-  background-color: white;
-  border: none;
-  font-size: 16px;
-  border: 1px solid black;
-  padding: 10px;
-  min-width: 100px;
-  border-radius: 10px;
-  cursor: pointer;
+  color: rgb(168, 168, 255);
 }
 </style>

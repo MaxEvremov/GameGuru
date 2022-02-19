@@ -3,7 +3,7 @@ import axios from 'axios'
 export class BlogAPI {
   async getPosts(){
     return (
-      axios.get('http://127.0.0.1:8002/posts/')
+      axios.get('http://127.0.0.1:8000/posts/')
     .then(function(response){
       console.log(response.data)
       return response.data
@@ -22,13 +22,13 @@ export class BlogAPI {
       created:post.creted
     }
     const posts = JSON.stringify(values)
-    axios.post('http://127.0.0.1:8001/users/',
+    axios.post('http://127.0.0.1:8000/users/',
       posts
     )
   }
   async patch(id,value){
     return(
-      axios.post(`http://127.0.0.1:8002/post/patch/${id}/`,
+      axios.post(`http://127.0.0.1:8000/post/patch/${id}/`,
     JSON.stringify(value)
     )
     .then(function (response) {
@@ -39,7 +39,7 @@ export class BlogAPI {
   }
   async delete(id){
     return(
-      axios.delete(`http://127.0.0.1:8001/post/patch/${id}/`)
+      axios.delete(`http://127.0.0.1:8000/post/patch/${id}/`)
     )
   }
 }

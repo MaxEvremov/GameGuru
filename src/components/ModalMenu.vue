@@ -14,15 +14,10 @@
     </div>
 
     <div class="podrazdel_2">
-      <div class="UserInfo">
-        <h4 class="nameUser"
-        v-if="getAuthStatus"
-        @click="toUserCabinet"
-        >{{getUserInformation.forname}} {{getUserInformation.lastname}}</h4>
-      </div>
+        <my-button v-if="getAuthStatus" @click="toUserCabinet">{{getUserInformation.forname}} {{getUserInformation.lastname}}</my-button>
       <div class="menuElements login">
         <my-button @mouseenter="showLogin" v-if="!getAuthStatus">Войти</my-button>
-        <my-button @mouseenter="exiteAccount"  v-else>Выйти</my-button>
+        <my-button @click="exiteAccount"  v-else>Выйти</my-button>
         </div>
     </div>
   </div>
@@ -138,6 +133,7 @@ export default {
 .podrazdel_2{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
   background-color: white;
   justify-content: end;
   gap: 20px;

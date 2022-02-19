@@ -5,7 +5,7 @@ from django.utils import timezone
 from users.models import User
 from django.contrib import admin
 from taggit.managers import TaggableManager
-from versatileimagefield.fields import VersatileImageField, PPOIField
+# from versatileimagefield.fields import VersatileImageField, PPOIField
 
 
 class Image(models.Model):

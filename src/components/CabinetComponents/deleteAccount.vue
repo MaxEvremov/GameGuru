@@ -1,16 +1,11 @@
 <template>
   <div class="area forname">
-      <h4 class="title forname">Вы уверены?</h4>
-      </div>
-      <div class="buttonbar">
-        <button class="button"
-        @click="deleteAcc"
-        >Удаление</button>
-      <button class="button"
-      @click="showHideDelete"
-      >Отмена</button>
-      </div>
-
+    <h4 class="title color">Вы уверены?</h4>
+    <div class="buttonbar">
+      <my-button class="color" @click="deleteAcc">Удаление</my-button>
+      <my-button class="color" @click="showHideDelete">Отмена</my-button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -45,15 +40,7 @@ export default ({
   max-width: 250px;
   margin: auto;
 }
-.button{
-  margin-top: 4px;
-  background-color: white;
-  border: none;
-  font-size: 16px;
-  border: 1px solid black;
-  padding: 10px;
-  min-width: 100px;
-  border-radius: 10px;
-  cursor: pointer;
+.color{
+  color: rgb(168, 168, 255);
 }
 </style>

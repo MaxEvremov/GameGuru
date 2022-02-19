@@ -2,22 +2,16 @@
   <div class="window">
     <div class="area ">
       <h4 class="title password">Введите желаемый Пароль</h4>
-      <input class="input" type="password" v-model="change.password" @input="checkPassword">
+      <my-input  v-model="change.password" @input="checkPassword"></my-input>
     </div>
-
     <div class="area ">
       <h4 class="title password">Повторите Пароль</h4>
-      <input class="input" type="password" v-model="passw2" @input="confirmPassword">
+      <my-input  v-model="passw2" @input="confirmPassword"></my-input>
     </div>
-
-        <div class="buttonbar">
-          <button class="button"
-        @click="changePassword"
-        >Изменить</button>
-        <button class="button"
-        @click="showHidePassword"
-        >Закрыть</button>
-        </div>
+    <div class="buttonbar">
+      <my-button @click="changePassword">Изменить</my-button>
+      <my-button @click="showHidePassword">Закрыть</my-button>
+    </div>
   </div>
 </template>
 
@@ -78,9 +72,7 @@ export default {
 .window{
   display: grid;
   grid-template-columns: 1fr;
-  border: 1px solid black;
   border-radius: 10px;
-  margin: 10px;
   min-width: 300px;
   align-content: center
 }
@@ -92,6 +84,7 @@ export default {
 }
 .title{
   margin: 0;
+  color: rgb(168, 168, 255);
 }
 .input{
   margin-top: 20px;
@@ -108,15 +101,6 @@ export default {
   margin: auto;
 }
 .button{
-  margin-top: 4px;
-  background-color: white;
-  border: none;
-  font-size: 16px;
-  border: 1px solid black;
-  padding: 10px;
-  min-width: 100px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
+  color: rgb(168, 168, 255);
 }
 </style>

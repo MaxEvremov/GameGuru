@@ -6,23 +6,26 @@
       <div class="platformsWin">
         <h2>Платформы</h2>
         <div class="platforms">
-          <div class="item" v-for="platform in platforms"
-          :key="platform">{{platform}}</div>
+          <my-button class="item" v-for="platform in platforms" :key="platform">{{platform}}</my-button>
+          <!-- <div class="item" v-for="platform in platforms"
+          :key="platform">{{platform}}</div> -->
         </div>
       </div>
 
       <div class="genresWin">
         <h2>Жанры</h2>
         <div class="genres">
-          <div class="item" v-for="genre in genres"
-          :key="genre">{{genre}}</div>
+           <my-button class="item" v-for="genre in genres" :key="genre">{{genre}}</my-button>
+          <!-- <div class="item" v-for="genre in genres"
+          :key="genre">{{genre}}</div> -->
         </div>
       </div>
       <div class="compilationsWin">
       <h2>Подборки</h2>
       <div class="compilations">
-        <div class="item" v-for="compilation in compilations"
-        :key="compilation">{{compilation}}</div>
+        <my-button class="item" v-for="compilation in compilations" :key="compilation">{{compilation}}</my-button>
+        <!-- <div class="item" v-for="compilation in compilations"
+        :key="compilation">{{compilation}}</div> -->
       </div>
       </div>
     </div>
@@ -76,7 +79,7 @@ export default {
 <style scoped>
 .container{
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 40% 60%;
   min-width: 1050px;
   gap: 30px;
   height: 300px;
@@ -123,5 +126,8 @@ border-radius: 40px;
   display: grid;
   grid-template-rows: repeat(6,1fr);
   align-items: start
+}
+.compilationsWin{
+  min-width: 202px;
 }
 </style>

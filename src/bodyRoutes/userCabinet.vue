@@ -5,64 +5,29 @@
       <h3 class="title">Вы вошли, как:</h3>
       <h2>{{getUserInformation.forname}} {{getUserInformation.lastname}}</h2>
     </div>
-
-    <div class="buttons">
-      <button class="button"
-      v-if="getStatusesSettings.settings!==true" @click="showHideSettings">
-      Настройки
-    </button>
-    <button class="button" 
-      v-else @click="showHideSettings">
-      Закрыть настройки
-    </button>
+    <div class="buttons" >
+      <my-button v-if="getStatusesSettings.settings!==true" @click="showHideSettings">Настройки</my-button>
+      <my-button v-else @click="showHideSettings">Закрыть настройки</my-button>
     </div>
     <!-- <transition name="list"> -->
       <div class="settings modal"
         v-if="getStatusesSettings.settings===true">
         <div class="buttons">
-          <!-- <transition-group name="list"> -->
-            <button class="button"
-              v-if="getStatusesSettings.login!==true" @click="showHideLogin">
-              Изменить логин
-            </button>
+            <my-button class="settingsbutton" v-if="getStatusesSettings.login!==true" @click="showHideLogin">Изменить логин</my-button>
               <changelogin v-if="getStatusesSettings.login===true"/>
-          <!-- </transition-group> -->
-
-            <button class="button"
-              v-if="getStatusesSettings.password!==true" @click="showHidePassword">
-              Изменить пароль
-            </button>
+            <my-button class="settingsbutton" v-if="getStatusesSettings.password!==true" @click="showHidePassword">Изменить пароль</my-button>
               <changepassword v-if="getStatusesSettings.password"/>
-
-            <button class="button"
-              v-if="getStatusesSettings.forname!==true" @click="showHideForname">
-              Изменить имя
-            </button>
+            <my-button class="settingsbutton" v-if="getStatusesSettings.forname!==true" @click="showHideForname">Изменить имя</my-button>
               <changeforname v-if="getStatusesSettings.forname===true"/>
-
-            <button class="button"
-              v-if="getStatusesSettings.lastname!==true" @click="showHideLastname">
-              Изменить фамлию
-            </button>
+            <my-button class="settingsbutton" v-if="getStatusesSettings.lastname!==true" @click="showHideLastname">Изменить фамлию</my-button>
               <changelastname v-if="getStatusesSettings.lastname===true"/>
-
-            <button class="button delete"
-              v-if="getStatusesSettings.delete!==true" @click="showHideDelete">
-              Удалить аккаунт
-            </button>
+            <my-button class="settingsbutton" v-if="getStatusesSettings.delete!==true" @click="showHideDelete">Удалить аккаунт</my-button>
               <deleteAccount v-if="getStatusesSettings.delete===true"/>
         </div>
       </div>
     <!-- </transition> -->
-
-    <button class="button"
-        @click="toContentPage"
-        >На главную</button>
-
-    <button class="button"
-        @click="exiteAccount"
-        >Выйти</button>
-
+    <my-button  @click="toContentPage">На главную</my-button>
+    <my-button  @click="exiteAccount">Выйти</my-button>
   </div>
 
   <div v-else>
@@ -70,18 +35,11 @@
     <div>
       <loginCabinet/>
     </div>
-
-    <!-- <div>
-      <button class="button content"
-      @click="toContentPage"
-      >На главную страницу</button>
-    </div> -->
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-
 import changelogin from '../components/CabinetComponents/changeLogin.vue'
 import changepassword from '../components/CabinetComponents/changePassword.vue'
 import changeforname from '../components/CabinetComponents/changeForname.vue'
@@ -153,7 +111,7 @@ box-shadow: 0px 0px 20px 3px rgba(0, 144, 255, 0.69);
   justify-items: center;
 }
 .button{
-  margin: 5px;
+  /* margin: 5px;
   background-color: white;
   border: none;
   font-size: 16px;
@@ -161,7 +119,11 @@ box-shadow: 0px 0px 20px 3px rgba(0, 144, 255, 0.69);
   padding: 10px;
   border-radius: 10px;
   min-width: 160px;
-  color: black;
+  color: black; */
+  /* color: rgb(168, 168, 255); */
+}
+.settingsbutton{
+   color: rgb(168, 168, 255);
 }
 .delete{
   background-color: rgb(255, 241, 241);

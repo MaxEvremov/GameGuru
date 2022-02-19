@@ -55,7 +55,7 @@ export default({
      }
    },
    getUrl(url){
-     let complete = "http://127.0.0.1:8002"+url
+     let complete = "http://127.0.0.1:8000"+url
      return complete
    },
    getToPage(){
@@ -64,7 +64,7 @@ export default({
   },
 })
 </script>
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Yanone+Kaffeesatz&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300;400&display=swap');

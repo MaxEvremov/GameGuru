@@ -30,6 +30,7 @@
       @click="closeAndNulledTry"
       >Закрыть</button> -->
     </div>
+    <my-button @click="showRegistration">Регистрация</my-button>
     <div class="alert" v-if="getTryEnter">
       <p class="text">Неверный логин или пароль</p>
       <p class="text">Проверьте Caps Lock</p>
@@ -78,6 +79,7 @@ export default {
   width: 200px;
   /* height: 130px; */
   margin-left: 100px;
+  z-index: 1000;
 }
 .window__open{
 height: 220px;

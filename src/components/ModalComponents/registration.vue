@@ -129,7 +129,7 @@ export default {
   -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 144, 255, 0.69);
   -moz-box-shadow: 0px 0px 10px 1px rgba(0, 144, 255, 0.69);
   box-shadow: 0px 0px 6px 1px rgba(0, 144, 255, 0.90);
-  z-index: 1;
+  z-index: 1000;
 }
 .area{
   display: grid;
